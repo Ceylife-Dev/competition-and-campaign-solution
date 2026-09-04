@@ -1,25 +1,25 @@
-import {
-  BellIcon,
-  ChevronDownIcon,
-  MenuIcon,
-  SearchIcon,
-} from "@/components/icons";
+import { LuPanelLeftClose, LuPanelLeftOpen } from "react-icons/lu";
+import { BellIcon, ChevronDownIcon, SearchIcon } from "@/components/icons";
 
 interface TopbarProps {
   onMenuClick: () => void;
+  collapsed?: boolean;
 }
 
-export function Topbar({ onMenuClick }: TopbarProps) {
+export function Topbar({ onMenuClick, collapsed = false }: TopbarProps) {
   return (
-    <header className="sticky top-0 z-20 flex h-17 px-3 items-center gap-3 border-b border-slate-200 bg-white px-4 sm:px-6">
+    <header className="sticky top-0 z-20 flex h-17 px-3 items-center gap-3 border-b border-slate-100 bg-white px-4 sm:px-6">
       <button
         type="button"
         onClick={onMenuClick}
-        className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 cursor-pointer"
-
-        aria-label="Collapse sidebar"
+        className="rounded-lg p-2 text-slate-400 hover:bg-slate-100 cursor-pointer"
+        aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
       >
-        <MenuIcon className="h-5 w-5 -scale-x-100" />
+        {collapsed ? (
+          <LuPanelLeftOpen className="h-5 w-5" />
+        ) : (
+          <LuPanelLeftClose className="h-5 w-5" />
+        )}
       </button>
 
       <div className="flex-1" />

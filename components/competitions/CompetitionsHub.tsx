@@ -107,7 +107,7 @@ export function CompetitionsHub({ competitions }: CompetitionsHubProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="min-w-0 space-y-6">
       {/* Breadcrumb + title + primary actions */}
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
         <div>
@@ -157,7 +157,7 @@ export function CompetitionsHub({ competitions }: CompetitionsHubProps) {
           />
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <div
             role="group"
             aria-label="View mode"
