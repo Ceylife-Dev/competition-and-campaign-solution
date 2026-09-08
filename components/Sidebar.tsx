@@ -1,17 +1,15 @@
-import type { ComponentType, SVGProps } from "react";
-import { cn } from "@/components/cn";
+import type { IconType } from "react-icons";
 import {
-  BarChartIcon,
-  ChevronDownIcon,
-  GridIcon,
-  LayoutDashboardIcon,
-  SendIcon,
-  SettingsIcon,
-  TagIcon,
-  TrophyIcon,
-} from "@/components/icons";
-
-type IconType = ComponentType<SVGProps<SVGSVGElement>>;
+  LuChartColumn,
+  LuChevronDown,
+  LuLayoutDashboard,
+  LuLayoutGrid,
+  LuSend,
+  LuSettings,
+  LuTag,
+  LuTrophy,
+} from "react-icons/lu";
+import { cn } from "@/components/cn";
 
 interface NavItem {
   label: string;
@@ -28,21 +26,21 @@ interface NavSection {
 const SECTIONS: NavSection[] = [
   {
     heading: "Main",
-    items: [{ label: "Dashboard", icon: LayoutDashboardIcon }],
+    items: [{ label: "Dashboard", icon: LuLayoutDashboard }],
   },
   {
     heading: "Manage",
     items: [
-      { label: "Competitions", icon: TrophyIcon, active: true, expandable: true },
-      { label: "Campaigns", icon: SendIcon, expandable: true },
-      { label: "Promotions", icon: TagIcon, expandable: true },
+      { label: "Competitions", icon: LuTrophy, active: true, expandable: true },
+      { label: "Campaigns", icon: LuSend, expandable: true },
+      { label: "Promotions", icon: LuTag, expandable: true },
     ],
   },
   {
     heading: "Resources",
     items: [
-      { label: "Reports", icon: BarChartIcon },
-      { label: "Settings", icon: SettingsIcon },
+      { label: "Reports", icon: LuChartColumn },
+      { label: "Settings", icon: LuSettings },
     ],
   },
 ];
@@ -69,7 +67,7 @@ export function Sidebar({ className, collapsed = false }: SidebarProps) {
         )}
       >
         <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-red-900 text-white">
-          <GridIcon className="h-4 w-4" />
+          <LuLayoutGrid className="h-4 w-4" />
         </span>
         {!collapsed && (
           <div>
@@ -114,7 +112,7 @@ export function Sidebar({ className, collapsed = false }: SidebarProps) {
                       <span className="flex-1 text-left">{item.label}</span>
                     )}
                     {!collapsed && item.expandable && (
-                      <ChevronDownIcon className="h-4 w-4 text-slate-400" />
+                      <LuChevronDown className="h-4 w-4 text-slate-400" />
                     )}
                   </button>
                 </li>

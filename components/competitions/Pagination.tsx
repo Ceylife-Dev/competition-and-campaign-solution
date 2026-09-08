@@ -1,5 +1,5 @@
+import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { cn } from "@/components/cn";
-import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
 
 interface PaginationProps {
   page: number;
@@ -37,7 +37,7 @@ export function Pagination({
   total,
 }: PaginationProps) {
   return (
-    <div className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white px-4 py-3 md:flex-row md:items-center md:justify-between">
+    <div className="flex flex-col gap-4 items-center rounded-xl border border-slate-200 bg-white px-4 py-3 md:flex-row md:items-center md:justify-between">
       <nav className="flex flex-wrap items-center gap-1" aria-label="Pagination">
         <button
           type="button"
@@ -45,7 +45,7 @@ export function Pagination({
           disabled={page <= 1}
           className="flex items-center gap-1 rounded-md px-2 py-1.5 text-sm text-slate-500 hover:bg-slate-100 disabled:pointer-events-none disabled:opacity-40"
         >
-          <ChevronLeftIcon className="h-4 w-4" />
+          <LuChevronLeft className="h-4 w-4" />
           Previous
         </button>
 
@@ -82,7 +82,7 @@ export function Pagination({
           className="flex items-center gap-1 rounded-md px-2 py-1.5 text-sm text-slate-500 hover:bg-slate-100 disabled:pointer-events-none disabled:opacity-40"
         >
           Next
-          <ChevronRightIcon className="h-4 w-4" />
+          <LuChevronRight className="h-4 w-4" />
         </button>
       </nav>
 

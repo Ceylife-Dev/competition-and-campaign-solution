@@ -1,5 +1,10 @@
-import { LuPanelLeftClose, LuPanelLeftOpen } from "react-icons/lu";
-import { BellIcon, ChevronDownIcon, SearchIcon } from "@/components/icons";
+import {
+  LuBell,
+  LuChevronDown,
+  LuPanelLeftClose,
+  LuPanelLeftOpen,
+  LuSearch,
+} from "react-icons/lu";
 
 interface TopbarProps {
   onMenuClick: () => void;
@@ -8,7 +13,7 @@ interface TopbarProps {
 
 export function Topbar({ onMenuClick, collapsed = false }: TopbarProps) {
   return (
-    <header className="sticky top-0 z-20 flex h-17 px-3 items-center gap-3 border-b border-slate-100 bg-white px-4 sm:px-6">
+    <header className="sticky top-0 z-20 hidden h-17 items-center gap-3 border-b border-slate-200 bg-white px-4 sm:px-6 lg:flex">
       <button
         type="button"
         onClick={onMenuClick}
@@ -24,8 +29,8 @@ export function Topbar({ onMenuClick, collapsed = false }: TopbarProps) {
 
       <div className="flex-1" />
 
-      <div className="relative hidden max-w-xs flex-1 sm:block">
-        <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+      <div className="relative hidden max-w-[240px] flex-1 sm:block">
+        <LuSearch className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
         <input
           type="search"
           placeholder="Search…"
@@ -39,7 +44,7 @@ export function Topbar({ onMenuClick, collapsed = false }: TopbarProps) {
           className="relative cursor-pointer rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100"
           aria-label="Notifications"
         >
-          <BellIcon className="h-5 w-5" />
+          <LuBell className="h-5 w-5" />
 
           <span className="absolute right-0 top-0 grid h-3.5 w-3.5 place-items-center rounded-full bg-red-800 text-[8px] font-bold text-white">
             3
@@ -47,14 +52,14 @@ export function Topbar({ onMenuClick, collapsed = false }: TopbarProps) {
         </button>
 
         <label className="cursor-pointer">
-        <div className="flex h-10 items-center gap-2 rounded-full border border-slate-200 py-1.5 pl-1.5 pr-3.5">
+        <div className="flex h-10 max-w-[168px] items-center gap-2 rounded-full border border-slate-200 py-1.5 pl-1.5 pr-3.5">
           <span className="grid h-7 w-7 place-items-center rounded-full bg-slate-200 text-xs font-semibold text-slate-700">
             JS
           </span>
           <span className="hidden text-sm font-medium text-slate-700 sm:block">
             J.S. ••••••••
           </span>
-          <ChevronDownIcon className="h-4 w-4 text-slate-400" />
+          <LuChevronDown className="h-4 w-4 text-slate-400" />
         </div>
         </label>
       </div>

@@ -1,6 +1,8 @@
 "use client";
 
 import { type ReactNode, useState } from "react";
+import { BottomNav } from "./BottomNav";
+import { MobileHeader } from "./MobileHeader";
 import { Sidebar } from "./Sidebar";
 import { Topbar } from "./Topbar";
 
@@ -21,7 +23,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="flex min-h-screen min-w-[320px] bg-slate-50 text-slate-900">
+    <div className="flex min-h-screen min-w-[360px] bg-slate-50 text-slate-900">
       <Sidebar collapsed={collapsed} className="hidden lg:flex" />
 
       {navOpen && (
@@ -37,11 +39,14 @@ export function DashboardShell({ children }: { children: ReactNode }) {
       )}
 
       <div className="flex min-w-0 flex-1 flex-col">
+        <MobileHeader onMenuClick={handleMenuClick} />
         <Topbar onMenuClick={handleMenuClick} collapsed={collapsed} />
-        <main className="min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-8">
+        <main className="min-w-0 flex-1 px-4 pb-24 pt-6 sm:px-6 lg:px-8 lg:pb-8">
           <div className="mx-auto min-w-0 max-w-7xl">{children}</div>
         </main>
       </div>
+
+      <BottomNav />
     </div>
   );
 }

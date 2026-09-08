@@ -3,13 +3,13 @@
 import { useMemo, useState } from "react";
 import { cn } from "@/components/cn";
 import {
-  ChevronDownIcon,
-  DownloadIcon,
-  GridIcon,
-  ListIcon,
-  PlusIcon,
-  SearchIcon,
-} from "@/components/icons";
+  LuChevronDown,
+  LuDownload,
+  LuLayoutGrid,
+  LuList,
+  LuPlus,
+  LuSearch,
+} from "react-icons/lu";
 import {
   type Competition,
   type Frequency,
@@ -124,20 +124,16 @@ export function CompetitionsHub({ competitions }: CompetitionsHubProps) {
             </span>
           </div>
         </div>
-        <div className="flex flex-wrap items-center gap-3">
-          <button
-            type="button"
-            className="inline-flex h-10 items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 text-sm font-medium text-slate-600 hover:bg-slate-50 cursor-pointer"
-          >
-            <DownloadIcon className="h-4 w-4" />
+
+        <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-1">
+          <button type="button" className="inline-flex h-10 shrink-0 items-center gap-1.5 sm:gap-2 rounded-lg border border-slate-200 bg-white px-3 sm:px-4 text-xs sm:text-sm font-medium text-slate-600 hover:bg-slate-50 cursor-pointer">
+            <LuDownload className="h-4 w-4" />
             Export All
           </button>
-          <button
-            type="button"
-            className="inline-flex h-10 items-center gap-2 rounded-lg bg-red-900 px-4 text-sm font-semibold text-white hover:bg-red-950 cursor-pointer"
-          >
-            <PlusIcon className="h-4 w-4" />
-            Create New Competition
+          <button type="button" className="inline-flex h-10 shrink-0 items-center gap-1.5 sm:gap-2 rounded-lg bg-red-900 px-3 sm:px-4 text-xs sm:text-sm font-semibold text-white hover:bg-red-950 cursor-pointer">
+            <LuPlus className="h-4 w-4" />
+            <span className="hidden sm:inline">Create New Competition</span>
+            <span className="sm:hidden">Create New Competition</span>
           </button>
         </div>
       </div>
@@ -147,7 +143,7 @@ export function CompetitionsHub({ competitions }: CompetitionsHubProps) {
       {/* Toolbar: search, view toggle, bulk actions */}
       <div className="flex flex-col gap-3 md:flex-row md:items-center">
         <div className="relative flex-1">
-          <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+          <LuSearch className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
           <input
             type="search"
             value={query}
@@ -157,7 +153,7 @@ export function CompetitionsHub({ competitions }: CompetitionsHubProps) {
           />
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap justify-between items-center gap-3">
           <div
             role="group"
             aria-label="View mode"
@@ -175,7 +171,7 @@ export function CompetitionsHub({ competitions }: CompetitionsHubProps) {
                   : "text-slate-500 hover:text-slate-700",
               )}
             >
-              <GridIcon className="h-4 w-4" />
+              <LuLayoutGrid className="h-4 w-4" />
               Tiles
             </button>
             <button
@@ -190,7 +186,7 @@ export function CompetitionsHub({ competitions }: CompetitionsHubProps) {
                   : "text-slate-500 hover:text-slate-700",
               )}
             >
-              <ListIcon className="h-4 w-4" />
+              <LuList className="h-4 w-4" />
               Table
             </button>
           </div>
@@ -205,7 +201,7 @@ export function CompetitionsHub({ competitions }: CompetitionsHubProps) {
                 {selected.size}
               </span>
             )}
-            <ChevronDownIcon className="h-4 w-4 text-slate-400" />
+            <LuChevronDown className="h-4 w-4 text-slate-400" />
           </button>
         </div>
       </div>
@@ -218,6 +214,8 @@ export function CompetitionsHub({ competitions }: CompetitionsHubProps) {
         <div className="flex flex-wrap gap-2">
           {FREQUENCY_FILTERS.map((option) => {
             const isActive = frequency === option.key;
+            const shortLabel = option.key === "ALL" ? "All" : option.key;
+
             return (
               <button
                 key={option.key}
@@ -232,7 +230,8 @@ export function CompetitionsHub({ competitions }: CompetitionsHubProps) {
                     : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50",
                 )}
               >
-                {option.label}
+                <span className="sm:hidden">{shortLabel}</span>
+                <span className="hidden sm:inline">{option.label}</span>
               </button>
             );
           })}
